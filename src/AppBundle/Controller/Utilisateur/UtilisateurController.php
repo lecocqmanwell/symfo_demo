@@ -11,7 +11,6 @@
 
 namespace AppBundle\Controller\Utilisateur;
 
-use AppBundle\Entity\Adress;
 use AppBundle\Entity\User;
 use AppBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -106,7 +105,7 @@ class UtilisateurController extends Controller
     /**
      * Finds and displays a User entity.
      *
-     * @Route("/user/{id}", name="user_show")
+     * @Route("/utilisateur/{id}", name="user_show")
      * @Method("GET")
      */
     public function showAction(User $user){
@@ -151,35 +150,6 @@ class UtilisateurController extends Controller
             'form' => $form->createView(),
         ]);
     }
-
-    /**
-     * Deletes a Post entity.
-     *
-     * @Route("/{id}/delete", name="admin_post_delete")
-     * @Method("POST")
-     * @Security("is_granted('delete', post)")
-     *
-     * The Security annotation value is an expression (if it evaluates to false,
-     * the authorization mechanism will prevent the user accessing this resource).
-     */
-    public function deleteAction(Request $request, Post $post)
-    {
-        if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
-            return $this->redirectToRoute('admin_post_index');
-        }
-
-        $entityManager = $this->getDoctrine()->getManager();
-
-        // Delete the tags associated with this blog post. This is done automatically
-        // by Doctrine, except for SQLite (the database used in this application)
-        // because foreign key support is not enabled by default in SQLite
-        $post->getTags()->clear();
-
-        $entityManager->remove($post);
-        $entityManager->flush();
-
-        $this->addFlash('success', 'post.deleted_successfully');
-
-        return $this->redirectToRoute('admin_post_index');
-    }
 }
+
+
