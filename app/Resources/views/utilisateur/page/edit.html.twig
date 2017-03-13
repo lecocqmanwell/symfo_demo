@@ -1,0 +1,15 @@
+{% extends 'utilisateur/layout.html.twig' %}
+
+
+{% if is_granted('ROLE_USER') %}
+
+    {% block body_id 'user_edit' %}
+
+    {% block main %}
+        <h1>Modifier vos infos</h1>
+
+        {{ form(form) }}
+
+    {% endblock %}
+
+{% endif %}

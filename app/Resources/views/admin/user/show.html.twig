@@ -1,0 +1,15 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block body_id 'user_show' %}
+
+{% block main %}
+    <h1>{{ user.username }}</h1>
+
+  <p>{{user.email}}</p>
+    <p>{{user.id}}</p>
+<p>{{ user.adress.town }}</p>
+
+    {{ parent() }}
+
+    {{ show_source_code(_self) }}
+{% endblock %}

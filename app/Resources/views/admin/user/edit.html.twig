@@ -1,0 +1,20 @@
+{% extends 'admin/layout.html.twig' %}
+
+
+{% if is_granted('ROLE_ADMIN') %}
+
+{% block body_id 'user_edit' %}
+
+{% block main %}
+    <h1>{{ 'username.user_edit'}}</h1>
+
+    {{ form(form) }}
+
+{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+
+    {{ show_source_code(_self) }}
+{% endblock %}
+{% endif %}

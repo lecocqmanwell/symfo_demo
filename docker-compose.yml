@@ -1,0 +1,20 @@
+web:
+    build: .
+    environment:
+        SYMFONY_ENV: dev
+    links:
+        - database
+    volumes:
+        - .:/app
+    ports:
+        - 80:80
+    domainname: symfonydemo.dev
+    hostname: symfonydemo.dev
+
+database:
+    image: mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: changeme
+        MYSQL_DATABASE: symfony_demo
+        MYSQL_USER: symfony_demo
+        MYSQL_PASSWORD: symfony_demo
